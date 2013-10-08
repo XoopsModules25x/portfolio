@@ -1,0 +1,6 @@
+Credits
+===============
+
+Originally developed by Eduardo Cortes (BitC3r0), and improved by René Sato (Sato-san)
+
+Updated to XOOPS 2.5.x Standard GUI by Michael Beck (Mamba)
