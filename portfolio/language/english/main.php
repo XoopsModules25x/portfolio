@@ -10,4 +10,3 @@ define('_PORTFOLIO_URL','Reference:');
 define('_PORTFOLIO_COMMENT','%s comments:');
 define('_PORTFOLIO_MOREIMAGES','Images:');
 define('_PORTFOLIO_PAGES','Pages:');
-?>

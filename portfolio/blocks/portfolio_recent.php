@@ -39,57 +39,61 @@
 
 function portfolio_bk_recent($options){
 
-	$db =& XoopsDatabaseFactory::getDatabaseConnection();
-	$myts =& MyTextSanitizer::getInstance();
-	
-	include_once XOOPS_ROOT_PATH.'/modules/portfolio/blocks/functions.php';
-	
-	$dir = portfolio_get_config('storedir');
-	if (substr($dir, strlen($dir) - 1, 1)!='/'){
-		$dir .= '/';
-	}
-	$dir = str_replace(XOOPS_ROOT_PATH, XOOPS_URL, $dir);
-	
-	$result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." ORDER BY id_w DESC LIMIT 0,$options[0]");
-	$block = array();
-	while ($row = $db->fetchArray($result)){
-		$rtn = array();
-		$rtn['id'] = $row['id_w'];
-		$rtn['titulo'] = $row['titulo'];
-		$rtn['img'] = $dir .'ths/'.$row['imagen'];
-		$rtn['desc'] = $myts->displayTarea($row['short']);
-		$block['works'][] = $rtn;
-	}
-	return $block;
+    $db =& XoopsDatabaseFactory::getDatabaseConnection();
+    $myts =& MyTextSanitizer::getInstance();
+    
+    include_once XOOPS_ROOT_PATH.'/modules/portfolio/blocks/functions.php';
+    
+    $dir = portfolio_get_config('storedir');
+    if (substr($dir, strlen($dir) - 1, 1)!='/'){
+        $dir .= '/';
+    }
+    $dir = str_replace(XOOPS_ROOT_PATH, XOOPS_URL, $dir);
+    
+    $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." ORDER BY id_w DESC LIMIT 0,$options[0]");
+    $block = array();
+    while ($row = $db->fetchArray($result)){
+        $rtn = array();
+        $rtn['id'] = $row['id_w'];
+        $rtn['titulo'] = $row['titulo'];
+        $rtn['img'] = $dir .'ths/'.$row['imagen'];
+        $rtn['desc'] = $myts->displayTarea($row['short']);
+        $block['works'][] = $rtn;
+    }
+
+    return $block;
 }
 
 function portfolio_bk_recent_edit($options){
-	$form = _BK_PORTFOLIO_NUMWORKS."<br /><input type='text' size='5' name='options[]' value='$options[0]' />";
-	return $form;
+    $form = _BK_PORTFOLIO_NUMWORKS."<br /><input type='text' size='5' name='options[]' value='$options[0]' />";
+
+    return $form;
 }
 
 /**
  * Mostramos los comentarios de los clientes
  **/
 function portfolio_bk_comments($options){
-	$db =& XoopsDatabaseFactory::getDatabaseConnection();
-	$myts =& MyTextSanitizer::getInstance();
-	$result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." ORDER BY id_w DESC LIMIT 0,$options[0]");
-	$block = array();
-	while ($row = $db->fetchArray($result)){
-		$rtn = array();
-		$rtn['id'] = $row['id_w'];
-		$rtn['titulo'] = $row['titulo'];
-		$rtn['texto'] = $myts->displayTarea($row['comentario']);
-		$rtn['cliente'] = $row['cliente'];
-		$block['works'][] = $rtn;
-	}
-	return $block;
+    $db =& XoopsDatabaseFactory::getDatabaseConnection();
+    $myts =& MyTextSanitizer::getInstance();
+    $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." ORDER BY id_w DESC LIMIT 0,$options[0]");
+    $block = array();
+    while ($row = $db->fetchArray($result)){
+        $rtn = array();
+        $rtn['id'] = $row['id_w'];
+        $rtn['titulo'] = $row['titulo'];
+        $rtn['texto'] = $myts->displayTarea($row['comentario']);
+        $rtn['cliente'] = $row['cliente'];
+        $block['works'][] = $rtn;
+    }
+
+    return $block;
 }
 
 function portfolio_bk_comments_edit($options){
-	$form = _BK_PORTFOLIO_NUMCOMMS."<br /><input type='text' size='5' name='options[]' value='$options[0]' />";
-	return $form;
+    $form = _BK_PORTFOLIO_NUMCOMMS."<br /><input type='text' size='5' name='options[]' value='$options[0]' />";
+
+    return $form;
 }
 
 /**
@@ -97,32 +101,33 @@ function portfolio_bk_comments_edit($options){
  */
 function portfolio_bk_featured($options){
 
-	$db =& XoopsDatabaseFactory::getDatabaseConnection();
-	$myts =& MyTextSanitizer::getInstance();
-	
-	include_once XOOPS_ROOT_PATH.'/modules/portfolio/blocks/functions.php';
-	
-	$dir = portfolio_get_config('storedir');
-	if (substr($dir, strlen($dir) - 1, 1)!='/'){
-		$dir .= '/';
-	}
-	$dir = str_replace(XOOPS_ROOT_PATH, XOOPS_URL, $dir);
-	
-	$result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." WHERE resaltado='1' ORDER BY id_w DESC LIMIT 0,$options[0]");
-	$block = array();
-	while ($row = $db->fetchArray($result)){
-		$rtn = array();
-		$rtn['id'] = $row['id_w'];
-		$rtn['titulo'] = $row['titulo'];
-		$rtn['img'] = $dir .'ths/'.$row['imagen'];
-		$rtn['desc'] = $myts->displayTarea($row['short']);
-		$block['works'][] = $rtn;
-	}
-	return $block;
+    $db =& XoopsDatabaseFactory::getDatabaseConnection();
+    $myts =& MyTextSanitizer::getInstance();
+    
+    include_once XOOPS_ROOT_PATH.'/modules/portfolio/blocks/functions.php';
+    
+    $dir = portfolio_get_config('storedir');
+    if (substr($dir, strlen($dir) - 1, 1)!='/'){
+        $dir .= '/';
+    }
+    $dir = str_replace(XOOPS_ROOT_PATH, XOOPS_URL, $dir);
+    
+    $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." WHERE resaltado='1' ORDER BY id_w DESC LIMIT 0,$options[0]");
+    $block = array();
+    while ($row = $db->fetchArray($result)){
+        $rtn = array();
+        $rtn['id'] = $row['id_w'];
+        $rtn['titulo'] = $row['titulo'];
+        $rtn['img'] = $dir .'ths/'.$row['imagen'];
+        $rtn['desc'] = $myts->displayTarea($row['short']);
+        $block['works'][] = $rtn;
+    }
+
+    return $block;
 }
 
 function portfolio_bk_featured_edit($options){
-	$form = _BK_PORTFOLIO_NUMWORKS."<br /><input type='text' size='5' name='options[]' value='$options[0]' />";
-	return $form;
+    $form = _BK_PORTFOLIO_NUMWORKS."<br /><input type='text' size='5' name='options[]' value='$options[0]' />";
+
+    return $form;
 }
-?>

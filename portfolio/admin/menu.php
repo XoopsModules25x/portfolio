@@ -44,7 +44,6 @@ $pathIcon32 = $module->getInfo('icons32');
 
 xoops_loadLanguage('admin', $dirname);
 
-
 $adminmenu = array();
 
 $i = 1;

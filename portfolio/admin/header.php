@@ -41,9 +41,9 @@ include '../../../include/cp_header.php';
  * Nos aseguramos que exista el lenguage buscaado
  */
 if (file_exists(XOOPS_ROOT_PATH . '/modules/portfolio/language/' . $xoopsConfig['language'] . '/admin.php')) {
-	include_once XOOPS_ROOT_PATH. '/modules/portfolio/language/' . $xoopsConfig['language'] . '/admin.php';
+    include_once XOOPS_ROOT_PATH. '/modules/portfolio/language/' . $xoopsConfig['language'] . '/admin.php';
 } else {
-	include_once XOOPS_ROOT_PATH . '/modules/portfolio/language/spanish/admin.php';
+    include_once XOOPS_ROOT_PATH . '/modules/portfolio/language/spanish/admin.php';
 }
 
 $mc =& $xoopsModuleConfig;
@@ -51,4 +51,3 @@ $db =& $xoopsDB;
 $myts =& MyTextSanitizer::getInstance();
 
 include 'admin.func.php';
-?>

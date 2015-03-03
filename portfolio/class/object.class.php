@@ -37,112 +37,115 @@
 
 class MFObject extends XoopsObject
 {
-	var $vars = array();
-	var $db = null;
-	var $_isNew = false;
-	var $_errors = array();
+    var $vars = array();
+    var $db = null;
+    var $_isNew = false;
+    var $_errors = array();
 
-	/**
-	 * Inicializa variables
-	 */
-	function initVar($name,$value=null,$required=false)
-	{
-		$this->vars[$name] = array('value'=>$value,'required'=>$required);
-	}
-	/**
-	 * Establece el valor de una variable
-	 */
-	function setVar($name, $value){
-		if (isset($this->vars[$name])){
-			$this->vars[$name]['value'] = $value;
-		}
-	}
-	/**
-	 * Establece varias variables de una vez
-	 */
-	function setVars($arrVars){
-		if (!is_array($arrVars)) return;
-		
-		foreach ($arrVars as $k => $v){
-			$this->setVar($k, $v);
-		}
-	}
-	/**
-	 * Devuelve una variable de nuestro array de variables
-	 * @param int $value_type Indica el formato del tipo a devolver
-	 * 0 = Valor normal, 1 = Cadena filtrada
-	 */
-	function getVar($name, $value_type = 0){
-		if (!isset($this->vars[$name])){ return ; }
-		switch ($value_type){
-		    case 1: // Formateado
-		    	$myts =& MyTextSanitizer::getInstance();
-		    	return $myts->displayTarea($this->vars[$name]['value']);
-		    case 2: // Para guardare
-		    	$myts =& MyTextSanitizer::getInstance();
-		    	return $myts->makeTareaData4Save($this->vars[$name]['value']);
-			case 3: // Plano, sin HTML no XoopsCode
-				$myts =& MyTextSanitizer::getInstance();
-		    	return $myts->displayTarea($this->vars[$name]['value'], 0 ,0);
-			case 4: // Para editar
-				$myts =& MyTextSanitizer::getInstance();
-		    	return $myts->makeTareaData4Edit($this->vars[$name]['value'], 0 ,0);
-		    case 0:
-		    default:
-		          return $this->vars[$name]['value'];
-		          break;
-		}
-	}
-	/**
-	 * Devuelve un array asociativo con los valores
-	 * de las variables
-	 */
-	function getVars(){
-		return $this->vars;
-	}
-	/**
-	 * Inicializamos un objeto nuevo
-	 */
-	function setNew(){
-		$this->_isNew = true;
-	}
-	function unsetNew(){
-		$this->_isNew = false;
-	}
-	function isNew(){
-		return $this->_isNew;
-	}
-	/**
-	 * Creamos los errores
-	 */
-	function addError($text){
-		$this->_errors[] = $text;
-	}
-	/**
-	 * Obtenemos los errores
-	 */
-	function errors($html=true){
-		$ret = '';
-		
-		if (count($this->_errors)<=0){ return; }
-		
-		if ($html){
-		
-			$ret .= "<div class='outer' style='padding: 1px;'>";
-			foreach ($this->_errors as $k){
-				$ret .= "<div class='odd'>$k</div>";
-			}
-			$ret .= "</div>";
-		
-		} else {
-		
-			foreach ($this->_errors as $k){
-				$ret .= $k."<br />";
-			}
-		
-		}
-		
-		return $ret;
-	}
+    /**
+     * Inicializa variables
+     */
+    function initVar($name,$value=null,$required=false)
+    {
+        $this->vars[$name] = array('value'=>$value,'required'=>$required);
+    }
+    /**
+     * Establece el valor de una variable
+     */
+    function setVar($name, $value){
+        if (isset($this->vars[$name])){
+            $this->vars[$name]['value'] = $value;
+        }
+    }
+    /**
+     * Establece varias variables de una vez
+     */
+    function setVars($arrVars){
+        if (!is_array($arrVars)) return;
+        
+        foreach ($arrVars as $k => $v){
+            $this->setVar($k, $v);
+        }
+    }
+    /**
+     * Devuelve una variable de nuestro array de variables
+     * @param int $value_type Indica el formato del tipo a devolver
+     *                        0 = Valor normal, 1 = Cadena filtrada
+     */
+    function getVar($name, $value_type = 0){
+        if (!isset($this->vars[$name])){ return ; }
+        switch ($value_type){
+            case 1: // Formateado
+                $myts =& MyTextSanitizer::getInstance();
+
+                return $myts->displayTarea($this->vars[$name]['value']);
+            case 2: // Para guardare
+                $myts =& MyTextSanitizer::getInstance();
+
+                return $myts->makeTareaData4Save($this->vars[$name]['value']);
+            case 3: // Plano, sin HTML no XoopsCode
+                $myts =& MyTextSanitizer::getInstance();
+
+                return $myts->displayTarea($this->vars[$name]['value'], 0 ,0);
+            case 4: // Para editar
+                $myts =& MyTextSanitizer::getInstance();
+
+                return $myts->makeTareaData4Edit($this->vars[$name]['value'], 0 ,0);
+            case 0:
+            default:
+                  return $this->vars[$name]['value'];
+                  break;
+        }
+    }
+    /**
+     * Devuelve un array asociativo con los valores
+     * de las variables
+     */
+    function getVars(){
+        return $this->vars;
+    }
+    /**
+     * Inicializamos un objeto nuevo
+     */
+    function setNew(){
+        $this->_isNew = true;
+    }
+    function unsetNew(){
+        $this->_isNew = false;
+    }
+    function isNew(){
+        return $this->_isNew;
+    }
+    /**
+     * Creamos los errores
+     */
+    function addError($text){
+        $this->_errors[] = $text;
+    }
+    /**
+     * Obtenemos los errores
+     */
+    function errors($html=true){
+        $ret = '';
+        
+        if (count($this->_errors)<=0){ return; }
+        
+        if ($html){
+        
+            $ret .= "<div class='outer' style='padding: 1px;'>";
+            foreach ($this->_errors as $k){
+                $ret .= "<div class='odd'>$k</div>";
+            }
+            $ret .= "</div>";
+        
+        } else {
+        
+            foreach ($this->_errors as $k){
+                $ret .= $k."<br />";
+            }
+        
+        }
+        
+        return $ret;
+    }
 }
-?>

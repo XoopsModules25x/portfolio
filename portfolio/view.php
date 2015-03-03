@@ -43,14 +43,13 @@ $xoops_module_header .= '<script type="text/javascript" src="js/prototype.js"></
 <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />';
 include 'header.php';
 
+    function clear_unicodeslashes($text) {
+        $text = str_replace(array("\\'"), "'", $text);
+        $text = str_replace(array("\\\\\\'"), "'", $text);
+        $text = str_replace(array('\\"'), '"', $text);
 
-	function clear_unicodeslashes($text) {
-		$text = str_replace(array("\\'"), "'", $text);
-		$text = str_replace(array("\\\\\\'"), "'", $text);
-		$text = str_replace(array('\\"'), '"', $text);
-		return $text;
-	}
-
+        return $text;
+    }
 
 $id = isset($_GET['id']) ? $_GET['id'] : 0;
 if ($id<=0){ header('location: index.php'); die(); }
@@ -61,10 +60,10 @@ include_once('class/work.class.php');
 $work = new MFWork($id);
 
 $tpl->assign('work', array('id'=>$work->getVar('id_w'),'titulo'=>$work->getVar('titulo'),
-		'desc'=>$myts->displayTarea(clear_unicodeslashes($work->getVar('desc')), 1, 1, 1, 1, 1),
-		'cliente'=>$work->getVar('cliente'),
-		'comentario'=>$myts->displayTarea($work->getVar('comentario')),
-		'url'=>$work->getVar('url'),'imagen'=>$work->getVar('imagen')));
+        'desc'=>$myts->displayTarea(clear_unicodeslashes($work->getVar('desc')), 1, 1, 1, 1, 1),
+        'cliente'=>$work->getVar('cliente'),
+        'comentario'=>$myts->displayTarea($work->getVar('comentario')),
+        'url'=>$work->getVar('url'),'imagen'=>$work->getVar('imagen')));
 
 $tpl->assign('lang_for', _PORTFOLIO_FOR);
 $tpl->assign('lang_desc', _PORTFOLIO_DESC);
@@ -73,8 +72,7 @@ $tpl->assign('lang_comment', sprintf(_PORTFOLIO_COMMENT, $work->getVar('cliente'
 $tpl->assign('lang_moreimgs', _PORTFOLIO_MOREIMAGES);
 
 foreach ($work->getVar('images') as $k => $v){
-	$tpl->append('images', $v['archivo']);
+    $tpl->append('images', $v['archivo']);
 }
 
 include 'footer.php';
-?>

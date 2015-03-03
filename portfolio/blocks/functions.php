@@ -36,24 +36,23 @@
 *******************************************************************/
 
 function portfolio_get_config($option, $modname='portfolio'){
-	global $xoopsModuleConfig, $xoopsModule;
+    global $xoopsModuleConfig, $xoopsModule;
 
-	if (isset($xoopsModuleConfig) && (is_object($xoopsModule) && $xoopsModule->getVar('dirname') == $modname && $xoopsModule->getVar('isactive'))) {
-		if(isset($xoopsModuleConfig[$option])) {
-			$retval= $xoopsModuleConfig[$option];
-		}
-	} else {
-		$module_handler =& xoops_gethandler('module');
-		$module =& $module_handler->getByDirname($modname);
-		$config_handler =& xoops_gethandler('config');
-		if ($module) {
-		    $moduleConfig =& $config_handler->getConfigsByCat(0, $module->getVar('mid'));
-	    	if(isset($moduleConfig[$option])) {
-	    		$retval= $moduleConfig[$option];
-	    	}
-		}
-	}
-	
-	return $retval;
+    if (isset($xoopsModuleConfig) && (is_object($xoopsModule) && $xoopsModule->getVar('dirname') == $modname && $xoopsModule->getVar('isactive'))) {
+        if(isset($xoopsModuleConfig[$option])) {
+            $retval= $xoopsModuleConfig[$option];
+        }
+    } else {
+        $module_handler =& xoops_gethandler('module');
+        $module =& $module_handler->getByDirname($modname);
+        $config_handler =& xoops_gethandler('config');
+        if ($module) {
+            $moduleConfig =& $config_handler->getConfigsByCat(0, $module->getVar('mid'));
+            if(isset($moduleConfig[$option])) {
+                $retval= $moduleConfig[$option];
+            }
+        }
+    }
+    
+    return $retval;
 }
-?>

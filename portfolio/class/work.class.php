@@ -39,43 +39,43 @@ include_once XOOPS_ROOT_PATH.'/modules/portfolio/class/object.class.php';
 
 class MFWork extends MFObject
 {
-	var $_tbl = '';
-	
-	function __construct($id=null){
-		
-		$this->db = XoopsDatabaseFactory::getDatabaseConnection();
-		
-		if (is_null($id)){ return; }
-		
-		$this->_tbl = $this->db->prefix("portfolio_works");
-		
-		$result = $this->db->query("SELECT * FROM $this->_tbl WHERE id_w='$id'");
-		if ($this->db->getRowsNum($result)<=0){ $this->initVar('found', false); return; }
-		
-		$row = $this->db->fetchArray($result);
-		
-		foreach ($row as $k => $v){
-			$this->initVar($k, $v);
-		}
-		
-		$this->initVar('found',true);
-		$this->initVar('images', $this->getImages());
-		
-	}
-	
-	/**
-	 * Obtenemos las im�genes
-	 */
-	function getImages(){
-		$result = $this->db->query("SELECT * FROM ".$this->db->prefix("portfolio_images")." WHERE work='".$this->getVar('id_w')."'");
-		$this->initVar('total_images', $this->db->getRowsNum($result));
-		$images = array();
-		while ($row=$this->db->fetchArray($result)){
-			$images[] = $row;
-		}
-		
-		return $images;
-	}
-}
+    var $_tbl = '';
+    
+    function __construct($id=null){
+        
+        $this->db = XoopsDatabaseFactory::getDatabaseConnection();
+        
+        if (is_null($id)){ return; }
+        
+        $this->_tbl = $this->db->prefix("portfolio_works");
+        
+        $result = $this->db->query("SELECT * FROM $this->_tbl WHERE id_w='$id'");
+        if ($this->db->getRowsNum($result)<=0){ $this->initVar('found', false);
 
-?>
+return; }
+        
+        $row = $this->db->fetchArray($result);
+        
+        foreach ($row as $k => $v){
+            $this->initVar($k, $v);
+        }
+        
+        $this->initVar('found',true);
+        $this->initVar('images', $this->getImages());
+        
+    }
+    
+    /**
+     * Obtenemos las im�genes
+     */
+    function getImages(){
+        $result = $this->db->query("SELECT * FROM ".$this->db->prefix("portfolio_images")." WHERE work='".$this->getVar('id_w')."'");
+        $this->initVar('total_images', $this->db->getRowsNum($result));
+        $images = array();
+        while ($row=$this->db->fetchArray($result)){
+            $images[] = $row;
+        }
+        
+        return $images;
+    }
+}

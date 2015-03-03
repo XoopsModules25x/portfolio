@@ -39,36 +39,38 @@ include_once XOOPS_ROOT_PATH.'/modules/portfolio/class/object.class.php';
 
 class MFCategory extends MFObject
 {
-	var $_tbl = '';
-	
-	function MFCategory($id=null){
-		
-		$this->db = XoopsDatabaseFactory::getDatabaseConnection();
-		
-		if (is_null($id)){ return; }
-		
-		$this->_tbl = $this->db->prefix("portfolio_categos");
-		
-		$result = $this->db->query("SELECT * FROM $this->_tbl WHERE id_cat='$id'");
-		if ($this->db->getRowsNum($result)<=0){ $this->initVar('found', false); return; }
-		
-		$row = $this->db->fetchArray($result);
-		
-		foreach ($row as $k => $v){
-			$this->initVar($k, $v);
-		}
-		
-		$this->initVar('found',true);
-		
-	}
-	
-	/**
-	 * Obtenemos el numero de trabajos en esta categoría
-	 */
-	function getWorksNumber(){
-		$result = $this->db->query("SELECT COUNT(*) FROM ".$this->db->prefix("portfolio_works")." WHERE catego='".$this->getVar('id_cat')."'");
-		list($num) = $this->db->fetchRow($result);
-		return $num;
-	}
+    var $_tbl = '';
+    
+    function MFCategory($id=null){
+        
+        $this->db = XoopsDatabaseFactory::getDatabaseConnection();
+        
+        if (is_null($id)){ return; }
+        
+        $this->_tbl = $this->db->prefix("portfolio_categos");
+        
+        $result = $this->db->query("SELECT * FROM $this->_tbl WHERE id_cat='$id'");
+        if ($this->db->getRowsNum($result)<=0){ $this->initVar('found', false);
+
+return; }
+        
+        $row = $this->db->fetchArray($result);
+        
+        foreach ($row as $k => $v){
+            $this->initVar($k, $v);
+        }
+        
+        $this->initVar('found',true);
+        
+    }
+    
+    /**
+     * Obtenemos el numero de trabajos en esta categoría
+     */
+    function getWorksNumber(){
+        $result = $this->db->query("SELECT COUNT(*) FROM ".$this->db->prefix("portfolio_works")." WHERE catego='".$this->getVar('id_cat')."'");
+        list($num) = $this->db->fetchRow($result);
+
+        return $num;
+    }
 }
-?>

@@ -41,7 +41,7 @@ include 'header.php';
 // Cargo las categoras
 $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_categos")." WHERE parent='0' ORDER BY orden");
 while ($row=$db->fetchArray($result)){
-	$tpl->append('categos', array('id'=>$row['id_cat'],'nombre'=>$row['nombre'],'desc'=>$myts->displayTarea($row['desc'],1,1,1,1,1)));
+    $tpl->append('categos', array('id'=>$row['id_cat'],'nombre'=>$row['nombre'],'desc'=>$myts->displayTarea($row['desc'],1,1,1,1,1)));
 }
 
 $tpl->assign('lang_categos', _PORTFOLIO_CATEGOS);
@@ -51,13 +51,12 @@ $tpl->assign('lang_recent', _PORTFOLIO_RECENTS);
 // Cargo los trabajos destacados
 $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." WHERE resaltado='1' ORDER BY id_w DESC LIMIT 0,$mc[featured]");
 while ($row=$db->fetchArray($result)){
-	$tpl->append('destacados', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short'],1,1,1,1,1),'img'=>$row['imagen']));
+    $tpl->append('destacados', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short'],1,1,1,1,1),'img'=>$row['imagen']));
 }
 
 $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." ORDER BY id_w DESC LIMIT 0,$mc[recents]");
 while ($row=$db->fetchArray($result)){
-	$tpl->append('recientes', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short'],1,1,1,1),'img'=>$row['imagen']));
+    $tpl->append('recientes', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short'],1,1,1,1),'img'=>$row['imagen']));
 }
 
 include 'footer.php';
-?>
