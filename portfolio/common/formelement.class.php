@@ -37,62 +37,61 @@
 
 class RMFormElement
 {
-	var $_name = '';
-	var $_caption = '';
-	var $_class = '';
-	var $_extra = '';
-	var $_required = '';
-	var $_description = '';
-	
-	function FormElement(){
-		exit("Esta clase no debe ser instanciada");
-	}
-	
-	function setName($name){
-		$this->_name = trim($name);
-	}
-	
-	function getName(){
-		return $this->_name;
-	}
-	
-	function setClass($class){
-		$this->_class = $class;
-	}
-	
-	function getClass(){
-		return $this->_class;
-	}
-	
-	function setCaption($caption){
-		$this->_caption = trim($caption);
-	}
-	
-	function getCaption(){
-		return $this->_caption;
-	}
-	
-	function setDescription($desc){
-		$this->_description = $desc;
-	}
-	
-	function getDescription(){
-		return $this->_description;
-	}
-	
-	function setExtra($extra){
-		$this->_extra = $extra;
-	}
-	
-	function getExtra(){
-		return $this->_extra;
-	}
-	/**
-	 * Obtenemos la tabla html formateada
-	 * metodo abastracto
-	 */
-	function render(){
-		
-	}
+    var $_name = '';
+    var $_caption = '';
+    var $_class = '';
+    var $_extra = '';
+    var $_required = '';
+    var $_description = '';
+    
+    function FormElement(){
+        exit("Esta clase no debe ser instanciada");
+    }
+    
+    function setName($name){
+        $this->_name = trim($name);
+    }
+    
+    function getName(){
+        return $this->_name;
+    }
+    
+    function setClass($class){
+        $this->_class = $class;
+    }
+    
+    function getClass(){
+        return $this->_class;
+    }
+    
+    function setCaption($caption){
+        $this->_caption = trim($caption);
+    }
+    
+    function getCaption(){
+        return $this->_caption;
+    }
+    
+    function setDescription($desc){
+        $this->_description = $desc;
+    }
+    
+    function getDescription(){
+        return $this->_description;
+    }
+    
+    function setExtra($extra){
+        $this->_extra = $extra;
+    }
+    
+    function getExtra(){
+        return $this->_extra;
+    }
+    /**
+     * Obtenemos la tabla html formateada
+     * metodo abastracto
+     */
+    function render(){
+        
+    }
 }
-?>

@@ -45,7 +45,7 @@ if ($id<=0){ header('location: index.php'); die(); }
 // Cargo las categorias
 $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_categos")." WHERE parent='$id' ORDER BY orden");
 while ($row=$db->fetchArray($result)){
-	$tpl->append('categos', array('id'=>$row['id_cat'],'nombre'=>$row['nombre'],'desc'=>$myts->displayTarea($row['desc'],1,1,1,1,1)));
+    $tpl->append('categos', array('id'=>$row['id_cat'],'nombre'=>$row['nombre'],'desc'=>$myts->displayTarea($row['desc'],1,1,1,1,1)));
 }
 
 $tpl->assign('lang_works', _PORTFOLIO_WORKS);
@@ -67,19 +67,18 @@ if (($num % $limit) > 0){ $tpages++; }
 $pactual = $pag + 1;
 
 if ($pactual>$tpages){
-	$rest = $pactual - $tpages;
-	$pactual = $pactual - $rest + 1;
-	$start = ($pactual - 1) * $limit;
+    $rest = $pactual - $tpages;
+    $pactual = $pactual - $rest + 1;
+    $start = ($pactual - 1) * $limit;
 }
-
 
 $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." WHERE catego='$id' ORDER BY id_w DESC LIMIT $start,$limit");
 while ($row=$db->fetchArray($result)){
-	$tpl->append('works', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short']),'img'=>$row['imagen']));
+    $tpl->append('works', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short']),'img'=>$row['imagen']));
 }
 
 for ($i=1;$i<=$tpages;$i++){
-	$nav .= "<a href='?pag=$i&amp;id=$id'>$i</a>| ";
+    $nav .= "<a href='?pag=$i&amp;id=$id'>$i</a>| ";
 }
 
 $tpl->assign('pages', $nav);
@@ -88,12 +87,12 @@ $tpl->assign('lang_pages', _PORTFOLIO_PAGES);
 // Cargo los trabajos destacados
 $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." WHERE catego='$id' AND resaltado='1' ORDER BY id_w DESC LIMIT 0,$mc[featured]");
 while ($row=$db->fetchArray($result)){
-	$tpl->append('destacados', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short']),'img'=>$row['imagen']));
+    $tpl->append('destacados', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short']),'img'=>$row['imagen']));
 }
 
 $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." WHERE catego='$id' ORDER BY id_w DESC LIMIT 0,$mc[recents]");
 while ($row=$db->fetchArray($result)){
-	$tpl->append('recientes', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short']),'img'=>$row['imagen']));
+    $tpl->append('recientes', array('id'=>$row['id_w'],'titulo'=>$row['titulo'],'desc'=>$myts->displayTarea($row['short']),'img'=>$row['imagen']));
 }
 
 $tpl->assign('footer', portfolio_make_footer(false));
@@ -102,4 +101,3 @@ $tpl->assign('footer', portfolio_make_footer(false));
 $tpl->assign('localize_bar', ":: <a href='index.php'>$mc[title]</a>" . portfolio_localize($id, 0));
 
 include 'footer.php';
-?>

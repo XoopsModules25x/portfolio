@@ -40,8 +40,8 @@ include XOOPS_ROOT_PATH."/header.php";
 $myts =& MyTextSanitizer::getInstance();
 
 if (!file_exists(XOOPS_ROOT_PATH."/modules/portfolio/language/".$xoopsConfig['language']."/main.php") ) {
-	include "language/spanish/main.php";
-	$xoopsTpl->assign('mod_language', 'spanish');
+    include "language/spanish/main.php";
+    $xoopsTpl->assign('mod_language', 'spanish');
 }
 
 include 'admin/admin.func.php';
@@ -53,4 +53,3 @@ $tpl =& $xoopsTpl;
 $tpl->assign('storedir', portfolio_add_slash(portfolio_web_dir($mc['storedir'])));
 $tpl->assign('module_path', XOOPS_ROOT_PATH . '/modules/rmshop');
 $tpl->assign('module_title', $mc['title']);
-?>

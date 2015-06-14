@@ -1,7 +1,6 @@
 <?php
 define('_MI_PORTFOLIO_MODDESC','Module to publish professional portfolios');
 
-
 // OPCIONES DE CONFIGURACION
 define("_MI_PORTFOLIO_EDITOR",'Editor Type:');
 define("_MI_PORTFOLIO_FORM_COMPACT","Compact");
@@ -28,7 +27,6 @@ define('_MI_PORTFOLIO_AM2','New Work');
 define('_MI_PORTFOLIO_AM3','Categories');
 define('_MI_PORTFOLIO_AM4','New Category');
 
-
 // Bloques
 define('_MI_PORTFOLIO_BKRECENT','Recent Works');
 define('_MI_PORTFOLIO_BKCOMMENTS','Customer Comments');
@@ -36,4 +34,3 @@ define('_MI_PORTFOLIO_BKFATURED','Featured Works');
 
 define('_MI_PORTFOLIO_AM0','Home');
 define('_MI_PORTFOLIO_ABOUT','About');
-?>

@@ -44,12 +44,12 @@ $modversion['help']        = 'page=help';
 $modversion['license']     = 'GNU GPL 2.0';
 $modversion['license_url'] = "www.gnu.org/licenses/gpl-2.0.html";
 $modversion['official'] = 0;
-$modversion['image'] 			= 'images/portfolio_ilogo.png';
+$modversion['image']            = 'images/portfolio_ilogo.png';
 $modversion['dirname'] = basename(dirname(__FILE__));
-$modversion["module_website_url"]	= "http://xoops.org";
-$modversion["module_website_name"]	= "XOOPS";
-$modversion["author_website_url"]	= "http://redmexico.com.mx";
-$modversion["author_website_name"]	= "Red México Soft";
+$modversion["module_website_url"]    = "http://xoops.org";
+$modversion["module_website_name"]    = "XOOPS";
+$modversion["author_website_url"]    = "http://redmexico.com.mx";
+$modversion["author_website_name"]    = "Red México Soft";
 
 //about
 $modversion['release_date']     = '2013/08/10';
@@ -70,7 +70,6 @@ $modversion['hasAdmin'] = 1;
 $modversion['adminindex'] = "admin/index.php";
 $modversion['adminmenu'] = "admin/menu.php";
 $modversion['system_menu'] = 1;
-
 
 // Menu Principal
 $modversion['hasMain'] = 1;
@@ -117,7 +116,6 @@ $modversion['blocks'][3]['template'] = 'portfolio_bk_featured.html';
 xoops_load('XoopsEditorHandler');
 $editor_handler = XoopsEditorHandler::getInstance();
 $editorList = array_flip($editor_handler->getList());
-
 
 $modversion['config'][1]['name'] = 'editor';
 $modversion['config'][1]['title'] = '_MI_PORTFOLIO_EDITOR';
@@ -204,4 +202,3 @@ $modversion['config'][12]['description'] = '';
 $modversion['config'][12]['formtype'] = 'textbox';
 $modversion['config'][12]['valuetype'] = 'int';
 $modversion['config'][12]['default'] = 5;
-?>
