@@ -1,0 +1,30 @@
+1.31 Final 2012/03/30 RC
+=================================
+- fixed display for HTML (mamba)
+
+1.31 2012/03/30 RC
+=================================
+- updated to ModuleClasses 1.1 (mamba)
+- Editors are dynamic now
+- newest version of Lightbox and other scripts
+- several other improvements
+
+1.30 2009/06/28 (René Sato)
+=================================
+- new module-icons
+- new icons for the frontend
+- better language files
+- language files as utf-8
+- better templates without errors
+- better block templates without errors
+- lightbox effect added
+- note added for image uploads (chmod: 777)
+- upload for jpg, gif, png + pdf
+
+1.20 2006/05/24 (BitC3R0)
+=================================
+Several improvements
+
+1.01 (BitC3R0)
+=================================
+Original Release
