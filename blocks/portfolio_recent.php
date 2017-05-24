@@ -40,7 +40,7 @@
 function portfolio_bk_recent($options){
 
     $db =& XoopsDatabaseFactory::getDatabaseConnection();
-    $myts =& MyTextSanitizer::getInstance();
+    $myts = MyTextSanitizer::getInstance();
     
     include_once XOOPS_ROOT_PATH.'/modules/portfolio/blocks/functions.php';
     
@@ -75,7 +75,7 @@ function portfolio_bk_recent_edit($options){
  **/
 function portfolio_bk_comments($options){
     $db =& XoopsDatabaseFactory::getDatabaseConnection();
-    $myts =& MyTextSanitizer::getInstance();
+    $myts = MyTextSanitizer::getInstance();
     $result = $db->query("SELECT * FROM ".$db->prefix("portfolio_works")." ORDER BY id_w DESC LIMIT 0,$options[0]");
     $block = array();
     while ($row = $db->fetchArray($result)){
@@ -102,7 +102,7 @@ function portfolio_bk_comments_edit($options){
 function portfolio_bk_featured($options){
 
     $db =& XoopsDatabaseFactory::getDatabaseConnection();
-    $myts =& MyTextSanitizer::getInstance();
+    $myts = MyTextSanitizer::getInstance();
     
     include_once XOOPS_ROOT_PATH.'/modules/portfolio/blocks/functions.php';
     

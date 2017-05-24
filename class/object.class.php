@@ -76,19 +76,19 @@ class MFObject extends XoopsObject
         if (!isset($this->vars[$name])){ return ; }
         switch ($value_type){
             case 1: // Formateado
-                $myts =& MyTextSanitizer::getInstance();
+                $myts = MyTextSanitizer::getInstance();
 
                 return $myts->displayTarea($this->vars[$name]['value']);
             case 2: // Para guardare
-                $myts =& MyTextSanitizer::getInstance();
+                $myts = MyTextSanitizer::getInstance();
 
                 return $myts->makeTareaData4Save($this->vars[$name]['value']);
             case 3: // Plano, sin HTML no XoopsCode
-                $myts =& MyTextSanitizer::getInstance();
+                $myts = MyTextSanitizer::getInstance();
 
                 return $myts->displayTarea($this->vars[$name]['value'], 0 ,0);
             case 4: // Para editar
-                $myts =& MyTextSanitizer::getInstance();
+                $myts = MyTextSanitizer::getInstance();
 
                 return $myts->makeTareaData4Edit($this->vars[$name]['value'], 0 ,0);
             case 0:
