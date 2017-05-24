@@ -37,7 +37,7 @@
 
 include("../../mainfile.php");
 include XOOPS_ROOT_PATH."/header.php";
-$myts =& MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 
 if (!file_exists(XOOPS_ROOT_PATH."/modules/portfolio/language/".$xoopsConfig['language']."/main.php") ) {
     include "language/spanish/main.php";

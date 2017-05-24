@@ -48,6 +48,6 @@ if (file_exists(XOOPS_ROOT_PATH . '/modules/portfolio/language/' . $xoopsConfig[
 
 $mc =& $xoopsModuleConfig;
 $db =& $xoopsDB;
-$myts =& MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 
 include 'admin.func.php';

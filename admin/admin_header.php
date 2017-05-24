@@ -20,7 +20,7 @@ $thisModuleDir = $GLOBALS['xoopsModule']->getVar('dirname');
 
 $mc =& $xoopsModuleConfig;
 $db =& $xoopsDB;
-$myts =& MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 
 include 'admin.func.php';
 
